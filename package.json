@@ -10,9 +10,9 @@
         "check": "yarn run lint && yarn run test",
         "generate": "babel-node src/generate-skeleton.js",
         "lint": "eslint -c .eslintrc src",
-        "solve": "babel-node src/main.js",
-        "test": "jest",
-        "test:watch": "jest --watch"
+        "solve": "NODE_PATH=. babel-node src/main.js",
+        "test": "NODE_PATH=. jest",
+        "test:watch": "NODE_PATH=. jest --watch"
     },
     "devDependencies": {
         "@babel/core": "7.1.6",
