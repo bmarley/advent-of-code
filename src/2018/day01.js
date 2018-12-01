@@ -1,21 +1,20 @@
+import wu from 'wu'
+
+const numbers = input => input.split('\n').map(Number)
 const sum = arr => arr.reduce((acc, num) => acc + num, 0)
+const addIfMissing = (set, val) => set.has(val) ? false : Boolean(set.add(val))
 
 export const solvePart1 = input => {
-    return sum(input.split('\n').map(Number))
+    return sum(numbers(input))
 }
 
 export const solvePart2 = input => {
-    const numbers = input.split('\n').map(Number)
-    const seenMap = new Map()
-    let i = 0
+    const seen = new Set()
     let s = 0
 
-    while (true) { // eslint-disable-line
-        s += numbers[i]
+    wu.cycle(numbers(input))
+        .takeWhile(_ => addIfMissing(seen, s))
+        .forEach(n => s += n)
 
-        if (seenMap.has(s)) return s
-
-        seenMap.set(s, true)
-        i = (i + 1) % numbers.length
-    }
+    return s
 }
