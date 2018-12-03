@@ -26,6 +26,6 @@ const run = async (year, day, part) => {
 
 run(process.argv[2], process.argv[3], process.argv[4])
     .then(answer => {
-        console.log(`>>> ${chalk.red(answer)} <<<`)
+        console.log(`>>> ${chalk.red(JSON.stringify(answer))} <<<`)
     })
     .catch(e => console.error(e))
