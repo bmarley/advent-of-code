@@ -1,5 +1,4 @@
-import { sum, max, maxBy, map, groupBy } from 'lodash'
-import { isBefore, getMinutes, addMinutes } from 'date-fns'
+import { sum, max, maxBy, range, forEach } from 'lodash'
 
 /*
  * Parses input lines into an Array<Guard>, where Guard is:
@@ -14,49 +13,42 @@ import { isBefore, getMinutes, addMinutes } from 'date-fns'
  * }
  */
 const getGuards = input => {
-    const lineRegex = /\[(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})].*/
+    const guards = {}
     let guard = null
 
-    const allEvents = input
-        .split('\n')
-        .sort()
-        .map(e => {
-            const [, , month, day, hour, minute] = lineRegex.exec(e)
-            const date = new Date(Date.UTC(2018, month, day, hour, minute, 0))
-            const text = e.substring('[1518-11-01 00:00] '.length)
+    const initGuard = id => {
+        if (!guards[id]) {
+            guards[id] = { id, minutesAsleep: Array(60).fill(0) }
+        }
 
-            const newGuard = /#(\d+)/.exec(e)
-            if (newGuard) {
-                guard = Number(newGuard[1])
-                return null
-            }
+        guard = guards[id]
+    }
 
-            return { date, text, id: guard }
-        })
-        .filter(Boolean)
+    const events = input.split('\n').sort()
 
-    return map(groupBy(allEvents, 'id'), (events, guardId) => {
-        const minutesAsleep = Array(60).fill(0)
+    events.forEach((e, idx) => {
+        const newGuard = /#(\d+)/.exec(e)
+        if (newGuard) {
+            initGuard(Number(newGuard[1]))
+            return null
+        }
 
-        events.forEach((e, idx) => {
-            if (e.text === 'falls asleep') {
-                const wakeEvent = events[idx + 1]
+        if (e.includes('falls asleep')) {
+            const minute = Number(/:(\d{2})/.exec(e)[1])
 
-                let date = e.date
-                while (isBefore(date, wakeEvent.date)) {
-                    minutesAsleep[getMinutes(date)]++
-                    date = addMinutes(date, 1)
-                }
-            }
-        })
+            const wakeEvent = events[idx + 1]
+            const wakeMinute = Number(/:(\d{2})/.exec(wakeEvent)[1])
 
-        return {
-            id: guardId,
-            minutesAsleep,
-            maxMinuteAsleep: minutesAsleep.indexOf(max(minutesAsleep)),
-            totalMinutesAsleep: sum(minutesAsleep),
+            range(minute, wakeMinute).forEach(m => guard.minutesAsleep[m]++)
         }
     })
+
+    forEach(guards, guard => {
+        guard.maxMinuteAsleep = guard.minutesAsleep.indexOf(max(guard.minutesAsleep))
+        guard.totalMinutesAsleep = sum(guard.minutesAsleep)
+    })
+
+    return Object.values(guards)
 }
 
 export const solvePart1 = input => {
