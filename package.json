@@ -25,20 +25,32 @@
         "babel-jest": "23.6.0",
         "eslint": "5.9.0",
         "eslint-plugin-jest": "22.1.0",
-        "jest": "23.6.0"
+        "jest": "23.6.0",
+        "prettier": "1.15.3"
     },
     "dependencies": {
-        "chalk": "^2.4.1",
-        "date-fns": "^1.29.0",
+        "chalk": "2.4.1",
+        "date-fns": "1.29.0",
         "dotenv": "6.1.0",
-        "lodash": "^4.17.11",
+        "lodash": "4.17.11",
         "node-fetch": "2.3.0",
-        "wu": "^2.1.0"
+        "wu": "2.1.0"
     },
     "jest": {
         "testPathIgnorePatterns": [
             "<rootDir>/templates",
             "<rootDir>/node_modules/"
         ]
+    },
+    "prettier": {
+        "useTabs": false,
+        "printWidth": 100,
+        "tabWidth": 4,
+        "singleQuote": true,
+        "trailingComma": "es5",
+        "bracketSpacing": true,
+        "jsxBracketSameLine": false,
+        "parser": "babylon",
+        "semi": false
     }
 }
