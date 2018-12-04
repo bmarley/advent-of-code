@@ -29,7 +29,9 @@
     },
     "dependencies": {
         "chalk": "^2.4.1",
+        "date-fns": "^1.29.0",
         "dotenv": "6.1.0",
+        "lodash": "^4.17.11",
         "node-fetch": "2.3.0",
         "wu": "^2.1.0"
     },
