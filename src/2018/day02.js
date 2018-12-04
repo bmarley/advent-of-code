@@ -35,14 +35,17 @@ const getCommonLetters = (a, b) => {
 export const solvePart1 = input => {
     const lines = input.split('\n')
 
-    const { hasTwo, hasThree } = lines.reduce((acc, line) => {
-        const counts = letterCounts(line)
+    const { hasTwo, hasThree } = lines.reduce(
+        (acc, line) => {
+            const counts = letterCounts(line)
 
-        if (hasVal(counts, 2)) acc.hasTwo++
-        if (hasVal(counts, 3)) acc.hasThree++
+            if (hasVal(counts, 2)) acc.hasTwo++
+            if (hasVal(counts, 3)) acc.hasThree++
 
-        return acc
-    }, { hasTwo: 0, hasThree: 0 })
+            return acc
+        },
+        { hasTwo: 0, hasThree: 0 }
+    )
 
     return hasTwo * hasThree
 }

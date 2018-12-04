@@ -13,11 +13,12 @@ import { isBefore, getMinutes, addMinutes } from 'date-fns'
  *   totalMinutesAsleep: Number
  * }
  */
-const getGuardTimes = input => {
+const getGuards = input => {
     const lineRegex = /\[(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})].*/
     let guard = null
 
-    const allEvents = input.split('\n')
+    const allEvents = input
+        .split('\n')
         .sort()
         .map(e => {
             const [, , month, day, hour, minute] = lineRegex.exec(e)
@@ -34,7 +35,7 @@ const getGuardTimes = input => {
         })
         .filter(Boolean)
 
-    return map(groupBy(allEvents, 'id'), (events, id) => {
+    return map(groupBy(allEvents, 'id'), (events, guardId) => {
         const minutesAsleep = Array(60).fill(0)
 
         events.forEach((e, idx) => {
@@ -50,7 +51,7 @@ const getGuardTimes = input => {
         })
 
         return {
-            id,
+            id: guardId,
             minutesAsleep,
             maxMinuteAsleep: minutesAsleep.indexOf(max(minutesAsleep)),
             totalMinutesAsleep: sum(minutesAsleep),
@@ -59,15 +60,15 @@ const getGuardTimes = input => {
 }
 
 export const solvePart1 = input => {
-    const guardTimes = getGuardTimes(input)
+    const guards = getGuards(input)
 
-    const g = maxBy(guardTimes, 'totalMinutesAsleep')
+    const g = maxBy(guards, 'totalMinutesAsleep')
     return g.id * g.maxMinuteAsleep
 }
 
 export const solvePart2 = input => {
-    const guardTimes = getGuardTimes(input)
+    const guards = getGuards(input)
 
-    const g = maxBy(guardTimes, guard => max(guard.minutesAsleep))
+    const g = maxBy(guards, guard => max(guard.minutesAsleep))
     return g.id * g.minutesAsleep.indexOf(max(g.minutesAsleep))
 }
