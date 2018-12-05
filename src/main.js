@@ -16,6 +16,11 @@ const run = async (year, day, part) => {
                 Cookie: `session=${process.env.SESSION}`,
             },
         })
+
+        if (res.status !== 200) {
+            throw Error(`Unable to fetch input. Status: ${res.status}`)
+        }
+
         const input = await res.text()
         fs.writeFileSync(filePath, input)
     }
