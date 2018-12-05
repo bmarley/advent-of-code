@@ -1,3 +1,4 @@
+import { performance as perf } from 'perf_hooks'
 import fs from 'fs'
 import path from 'path'
 import fetch from 'node-fetch'
@@ -12,20 +13,26 @@ const run = async (year, day, part) => {
         const d = day.startsWith('0') ? day.substring(1) : day
         const res = await fetch(`http://adventofcode.com/${year}/day/${d}/input`, {
             headers: {
-                Cookie: `session=${process.env.SESSION}`
+                Cookie: `session=${process.env.SESSION}`,
             },
         })
         const input = await res.text()
         fs.writeFileSync(filePath, input)
     }
 
+    const start = perf.now()
+
     const input = fs.readFileSync(filePath, 'utf-8').trim()
     const answer = dayModule[`solvePart${part}`](input)
-    return answer
+
+    return {
+        answer: JSON.stringify(answer),
+        time: perf.now() - start,
+    }
 }
 
 run(process.argv[2], process.argv[3], process.argv[4])
-    .then(answer => {
-        console.log(`>>> ${chalk.red(JSON.stringify(answer))} <<<`)
+    .then(({ answer, time }) => {
+        console.log(`>>> ${chalk.red(answer)} <<< in ${chalk.green(`${time.toFixed(2)}ms`)}`)
     })
     .catch(e => console.error(e))
