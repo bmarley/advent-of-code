@@ -5,7 +5,7 @@ const peek = stack => stack[stack.length - 1]
 const factorPolymer = input => {
     const stack = []
 
-    input.split('').forEach((char, idx) => {
+    input.split('').forEach(char => {
         // XOR of A and a, B and b, etc is 32
         if (!stack.length || (peek(stack).charCodeAt() ^ char.charCodeAt()) !== 32) {
             stack.push(char)
