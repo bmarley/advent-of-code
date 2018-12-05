@@ -11,6 +11,7 @@ const factorPolymer = input => {
 
     return input
 }
+
 export const solvePart1 = input => {
     return factorPolymer(input).length
 }
@@ -21,7 +22,7 @@ export const solvePart2 = input => {
     const polymers = Array(26) // Indexes 0-26 represent 65-91 ASCII codes
         .fill()
         .map((e, i) => {
-            const re = new RegExp(`${String.fromCharCode(i + 65)}`, 'gi')
+            const re = new RegExp(String.fromCharCode(i + 65), 'gi')
             const strippedInput = input.replace(re, '')
             return factorPolymer(strippedInput)
         })
