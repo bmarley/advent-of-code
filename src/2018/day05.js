@@ -1,15 +1,20 @@
 import { minBy } from 'lodash'
 
-const factorPolymer = input => {
-    for (let i = 0; i < input.length - 1; i++) {
-        const asciiPairDiff = Math.abs(input.charCodeAt(i) - input.charCodeAt(i + 1))
-        if (asciiPairDiff === 32) {
-            input = `${input.slice(0, i)}${input.slice(i + 2)}`
-            i -= 2
-        }
-    }
+const peek = stack => stack[stack.length - 1]
 
-    return input
+const factorPolymer = input => {
+    const stack = []
+
+    input.split('').forEach((char, idx) => {
+        // XOR of A and a, B and b, etc is 32
+        if (!stack.length || (peek(stack).charCodeAt() ^ char.charCodeAt()) !== 32) {
+            stack.push(char)
+        } else {
+            stack.pop()
+        }
+    })
+
+    return stack.join('')
 }
 
 export const solvePart1 = input => {
