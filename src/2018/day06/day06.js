@@ -7,7 +7,7 @@ export const solvePart1 = input => {
     const points = input.split('\n').map(l => extractNumbers(l))
     const upperBound = max(maxBy(points, pair => max(pair))) + 1
 
-    const shortestDistance = Array(upperBound)
+    const closestPoint = Array(upperBound)
         .fill()
         .map((e, i) => Array(upperBound))
 
@@ -17,23 +17,23 @@ export const solvePart1 = input => {
             const shortest = min(distances)
 
             if (distances.filter(d => d === shortest).length === 1) {
-                shortestDistance[x][y] = distances.indexOf(shortest)
+                closestPoint[x][y] = distances.indexOf(shortest)
             }
         })
     })
 
     const toIgnore = new Set()
     range(0, upperBound).forEach(n => {
-        toIgnore.add(shortestDistance[0][n])
-        toIgnore.add(shortestDistance[n][0])
-        toIgnore.add(shortestDistance[shortestDistance.length - 1][n])
-        toIgnore.add(shortestDistance[n][shortestDistance.length - 1])
+        toIgnore.add(closestPoint[0][n])
+        toIgnore.add(closestPoint[n][0])
+        toIgnore.add(closestPoint[closestPoint.length - 1][n])
+        toIgnore.add(closestPoint[n][closestPoint.length - 1])
     })
 
     const regionSizes = Array(points.length).fill(0)
     range(0, upperBound).forEach(x => {
         range(0, upperBound).forEach(y => {
-            const point = shortestDistance[x][y]
+            const point = closestPoint[x][y]
             if (!toIgnore.has(point)) {
                 regionSizes[point]++
             }
