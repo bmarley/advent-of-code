@@ -6,10 +6,11 @@ import chalk from 'chalk'
 require('dotenv').config()
 
 const run = async (year, day, part) => {
-    const dayModule = require(`./${year}/day${day}.js`)
-    const filePath = path.join(process.cwd(), 'input', year, `day${day}`)
+    const dayBase = path.join(__dirname, year, `day${day}`)
+    const dayModule = require(path.join(dayBase, `day${day}.js`))
+    const inputPath = path.join(dayBase, `day${day}`)
 
-    if (!fs.existsSync(filePath)) {
+    if (!fs.existsSync(inputPath)) {
         const d = day.startsWith('0') ? day.substring(1) : day
         const res = await fetch(`http://adventofcode.com/${year}/day/${d}/input`, {
             headers: {
@@ -22,12 +23,12 @@ const run = async (year, day, part) => {
         }
 
         const input = await res.text()
-        fs.writeFileSync(filePath, input)
+        fs.writeFileSync(inputPath, input)
     }
 
     const start = perf.now()
 
-    const input = fs.readFileSync(filePath, 'utf-8').trim()
+    const input = fs.readFileSync(inputPath, 'utf-8').trim()
     const answer = dayModule[`solvePart${part}`](input)
 
     return {
