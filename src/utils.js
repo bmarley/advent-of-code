@@ -1,3 +1,5 @@
+import { range, pad } from 'lodash'
+
 // Returns Array<Number>
 export const linesToNumbers = input => input.split('\n').map(Number)
 
@@ -15,3 +17,30 @@ export const trim = str =>
         .map(l => l.replace(/^\s*/, ''))
         .filter(l => l !== '')
         .join('\n')
+
+export const Array2d = (sizeX, sizeY, fill) => {
+    const grid = Array(sizeX)
+        .fill()
+        .map(() => {
+            const arr = Array(sizeY)
+            if (typeof fill !== 'undefined') {
+                arr.fill(fill)
+            }
+            return arr
+        })
+
+    grid.print = (padSize = 5) => {
+        let str = ''
+
+        range(0, sizeY).forEach(y => {
+            range(0, sizeX).forEach(x => {
+                str += pad(grid[x][y], padSize)
+            })
+            str += '\n'
+        })
+
+        console.log(str)
+    }
+
+    return grid
+}
