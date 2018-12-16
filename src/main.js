@@ -28,8 +28,8 @@ const run = async (year, day, part) => {
 
     const start = perf.now()
 
-    const input = fs.readFileSync(inputPath, 'utf-8').trim()
-    const answer = dayModule[`solvePart${part}`](input)
+    const input = fs.readFileSync(inputPath, 'utf-8').replace(/\n$/, '')
+    const answer = await dayModule[`solvePart${part}`](input)
 
     return {
         answer: JSON.stringify(answer),
