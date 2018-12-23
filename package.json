@@ -12,6 +12,7 @@
         "lint": "eslint -c .eslintrc src",
         "solve": "NODE_PATH=. babel-node src/main.js",
         "test": "NODE_PATH=. jest",
+        "test:debug": "NODE_PATH=. node --inspect-brk node_modules/.bin/jest --runInBand",
         "test:watch": "NODE_PATH=. jest --watch"
     },
     "devDependencies": {
