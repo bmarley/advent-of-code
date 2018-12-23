@@ -1,4 +1,4 @@
-import { solvePart1, solvePart2 } from './day12.js'
+import { solvePart1 } from './day12.js'
 import { trim } from 'src/utils.js'
 
 describe('2018 day 12', () => {
