@@ -29,7 +29,7 @@ export const Array2d = (sizeX, sizeY, fill) => {
             return arr
         })
 
-    grid.print = (padSize = 5, minX = 0, minY = 0, maxX = sizeX, maxY = sizeY) => {
+    grid.print = (padSize = 0, minX = 0, minY = 0, maxX = sizeX, maxY = sizeY) => {
         let str = ''
 
         range(minY, maxY).forEach(y => {
