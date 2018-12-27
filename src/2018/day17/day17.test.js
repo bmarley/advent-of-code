@@ -1,4 +1,4 @@
-import { solvePart1, solvePart2 } from './day17.js'
+import { solvePart1 } from './day17.js'
 import { trim } from 'src/utils.js'
 
 describe('2018 day 17', () => {
@@ -17,13 +17,6 @@ describe('2018 day 17', () => {
         test('solves an example', () => {
             const answer = solvePart1(example)
             expect(answer).toEqual(57)
-        })
-    })
-
-    describe('part 2', () => {
-        test('solves an example', () => {
-            const answer = solvePart2(example)
-            expect(answer).toEqual()
         })
     })
 })
