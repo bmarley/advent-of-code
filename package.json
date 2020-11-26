@@ -1,57 +1,42 @@
 {
-    "name": "aoc-2017",
-    "version": "1.0.0",
-    "description": "Advent of Code 2017",
-    "main": "index.js",
-    "repository": "https://github.com/apazzolini/aoc-2017",
-    "author": "Andre Azzolini (apazzolini)",
-    "license": "MIT",
-    "scripts": {
-        "check": "yarn run lint && yarn run test",
-        "generate": "babel-node src/generate-skeleton.js",
-        "lint": "eslint -c .eslintrc src",
-        "solve": "NODE_PATH=. babel-node src/main.js",
-        "test": "NODE_PATH=. jest",
-        "test:debug": "NODE_PATH=. node --inspect-brk node_modules/.bin/jest --runInBand",
-        "test:watch": "NODE_PATH=. jest --watch"
-    },
-    "devDependencies": {
-        "@babel/core": "7.1.6",
-        "@babel/node": "7.0.0",
-        "@babel/plugin-proposal-class-properties": "7.1.0",
-        "@babel/plugin-proposal-object-rest-spread": "7.0.0",
-        "@babel/preset-env": "7.1.6",
-        "babel-core": "7.0.0-bridge.0",
-        "babel-eslint": "10.0.1",
-        "babel-jest": "23.6.0",
-        "eslint": "5.9.0",
-        "eslint-plugin-jest": "22.1.0",
-        "jest": "23.6.0",
-        "prettier": "1.15.3"
-    },
-    "dependencies": {
-        "chalk": "2.4.1",
-        "date-fns": "1.29.0",
-        "dotenv": "6.1.0",
-        "lodash": "4.17.11",
-        "node-fetch": "2.3.0",
-        "wu": "2.1.0"
-    },
-    "jest": {
-        "testPathIgnorePatterns": [
-            "<rootDir>/templates",
-            "<rootDir>/node_modules/"
-        ]
-    },
-    "prettier": {
-        "useTabs": false,
-        "printWidth": 100,
-        "tabWidth": 4,
-        "singleQuote": true,
-        "trailingComma": "es5",
-        "bracketSpacing": true,
-        "jsxBracketSameLine": false,
-        "parser": "babylon",
-        "semi": false
-    }
+  "name": "advent-of-code",
+  "type": "module",
+  "private": true,
+  "description": "apazzolini's Advent of Code solutions",
+  "repository": "https://github.com/apazzolini/advent-of-code",
+  "author": "Andre Azzolini (apazzolini)",
+  "scripts": {
+    "check": "yarn run lint && yarn run test",
+    "generate": "node src/generate-skeleton.js",
+    "lint": "eslint -c .eslintrc src",
+    "solve": "node -r dotenv/config src/main.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:debug": "node --inspect-brk --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand",
+    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^4.8.2",
+    "eslint": "7.14.0",
+    "eslint-config-prettier": "6.15.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-jest": "^24.1.3",
+    "jest": "^26.6.3",
+    "prettier": "2.2.0",
+    "typescript": "^4.1.2"
+  },
+  "dependencies": {
+    "chalk": "4.1.0",
+    "clipboardy": "^2.3.0",
+    "dotenv": "8.2.0",
+    "lodash": "4.17.20",
+    "node-fetch": "2.6.1"
+  },
+  "jest": {
+    "transform": {},
+    "testEnvironment": "jest-environment-node",
+    "testPathIgnorePatterns": [
+      "<rootDir>/templates",
+      "<rootDir>/node_modules/"
+    ]
+  }
 }

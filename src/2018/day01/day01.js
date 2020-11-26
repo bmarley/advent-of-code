@@ -1,20 +1,25 @@
-import wu from 'wu'
-import { sum } from 'lodash'
-import { linesToNumbers } from 'src/utils.js'
+import _ from 'lodash'
+import { linesToNumbers } from '../../utils.js'
+
+const { sum } = _
 
 const addIfMissing = (set, val) => (set.has(val) ? false : Boolean(set.add(val)))
 
 export const solvePart1 = input => {
-    return sum(linesToNumbers(input))
+  return sum(linesToNumbers(input))
 }
 
 export const solvePart2 = input => {
-    const seen = new Set()
-    let s = 0
+  const changes = linesToNumbers(input)
+  const seen = new Set()
+  let idx = 0
+  let freq = 0
 
-    wu.cycle(linesToNumbers(input))
-        .takeWhile(_ => addIfMissing(seen, s))
-        .forEach(n => (s += n))
-
-    return s
+  while (true) {
+    freq += changes[idx]
+    if (!addIfMissing(seen, freq)) {
+      return freq
+    }
+    idx = (idx + 1) % changes.length
+  }
 }

@@ -15,17 +15,17 @@ gyxo (61)
 cntj (57)`
 
 describe('day 7', () => {
-    describe('part 1', () => {
-        test('solves an example', () => {
-            const answer = solvePart1(exampleInput)
-            expect(answer).toEqual('tknk')
-        })
+  describe('part 1', () => {
+    test('solves an example', () => {
+      const answer = solvePart1(exampleInput)
+      expect(answer).toEqual('tknk')
     })
+  })
 
-    describe('part 2', () => {
-        test('solves an example', () => {
-            const answer = solvePart2(exampleInput)
-            expect(answer).toEqual(60)
-        })
+  describe('part 2', () => {
+    test('solves an example', () => {
+      const answer = solvePart2(exampleInput)
+      expect(answer).toEqual(60)
     })
+  })
 })

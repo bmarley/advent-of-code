@@ -1,31 +1,34 @@
 {
-    'parser': 'babel-eslint',
-    'extends': 'eslint:recommended',
-    'rules': {
-        'arrow-body-style': 0,
-        'consistent-return': 0,
-        'dot-notation': 0,
-        'import/prefer-default-export': 0,
-        'import/newline-after-import': 0,
-        'import/extensions': 0,
-        'new-cap': 0,
-        'newline-per-chained-call': 0,
-        'no-await-in-loop': 0,
-        'no-console': 0,
-        'no-continue': 0,
-        'no-mixed-operators': 0,
-        'no-param-reassign': 0,
-        'no-plusplus': 0,
-        'no-underscore-dangle': 0,
-        'no-unused-expressions': 0,
-        'no-unused-vars': [2, { "args": "none" }],
-    },
-    'plugins': [
-        'jest',
-    ],
-    'env': {
-        'node': true,
-        'jest/globals': true,
-        'es6': true,
-    },
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/errors",
+    "prettier",
+  ],
+  "plugins": [
+    "jest",
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+  },
+  "env": {
+    "node": true,
+    "jest/globals": true,
+    "es6": true,
+  },
+  "rules": {
+    "no-console": "off",
+    "strict": ["error", "global"],
+    "curly": "off",
+    "no-unused-vars": [2, { "args": "none" }],
+    "no-use-before-define": "error",
+    "no-prototype-builtins": "off",
+    "prefer-const": ["error", { "destructuring": "all", "ignoreReadBeforeAssign": false }],
+    "no-constant-condition": "off",
+
+    "import/first": "error",
+    "import/order": ["error", { "groups": [["builtin", "external", "internal"]] }],
+    "import/newline-after-import": "error",
+  },
 }
