@@ -1,20 +1,18 @@
-import { solvePart1, solvePart2 } from './dayXXX.js'
-import { trim } from 'src/utils.js'
+import { solvePart1, solvePart2 } from './dayXXX.js' // eslint-disable-line
+import * as U from '../../utils.js' // eslint-disable-line
 
 describe('YYY day XXX', () => {
-    const example = trim(``)
+  const example = U.trim(``)
 
-    describe('part 1', () => {
-        test('solves an example', () => {
-            const answer = solvePart1(example)
-            expect(answer).toEqual()
-        })
+  describe('part 1', () => {
+    test('solves an example', () => {
+      expect(solvePart1(example)).toEqual()
     })
+  })
 
-    describe('part 2', () => {
-        test('solves an example', () => {
-            const answer = solvePart2(example)
-            expect(answer).toEqual()
-        })
+  describe('part 2', () => {
+    test('solves an example', () => {
+      expect(solvePart2(example)).toEqual()
     })
+  })
 })

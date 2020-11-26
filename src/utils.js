@@ -1,46 +1,63 @@
-import { range, pad } from 'lodash'
+import _ from 'lodash'
 
 // Returns Array<Number>
-export const linesToNumbers = input => input.split('\n').map(Number)
+export function linesToNumbers(input) {
+  return input.split('\n').map(Number)
+}
 
 // Returns Array<Number> of every number found in the line
-export const extractNumbers = str =>
-    (str.match(/-?[0-9.,]+/g) || []).map(n => n.replace(/,/g, '')).map(Number)
+export function extractNumbers(str) {
+  return (str.match(/-?[0-9.,]+/g) || []).map(n => n.replace(/,/g, '')).map(Number)
+}
 
 // Returns true if given Object has some key with a value matching val
-export const hasVal = (obj, val) => Object.values(obj).some(v => v === val)
+export function hasVal(obj, val) {
+  return Object.values(obj).some(v => v === val)
+}
 
 // For testing input trimming
-export const trim = str =>
-    str
-        .split('\n')
-        .map(l => l.replace(/^\s*/, ''))
-        .filter(l => l !== '')
-        .join('\n')
+export function trim(str) {
+  return str
+    .split('\n')
+    .map(l => l.replace(/^\s*/, ''))
+    .filter(l => l !== '')
+    .join('\n')
+}
 
-export const Array2d = (sizeX, sizeY, fill) => {
-    const grid = Array(sizeX)
-        .fill()
-        .map(() => {
-            const arr = Array(sizeY)
-            if (typeof fill !== 'undefined') {
-                arr.fill(fill)
-            }
-            return arr
-        })
+// Manhattan distance between pairs of { x: Number, y: Number } objects
+export function manhattan(a, b) {
+  return Math.abs(a.x - b.x) + Math.abs(a.y - b.y)
+}
 
-    grid.print = (padSize = 0, minX = 0, minY = 0, maxX = sizeX, maxY = sizeY) => {
-        let str = ''
+export function Grid(sizeX, sizeY, fill) {
+  const grid = Array(sizeX)
+    .fill()
+    .map(() => {
+      const arr = Array(sizeY)
+      if (typeof fill !== 'undefined') {
+        arr.fill(fill)
+      }
+      return arr
+    })
 
-        range(minY, maxY).forEach(y => {
-            range(minX, maxX).forEach(x => {
-                str += pad(grid[x][y], padSize)
-            })
-            str += '\n'
-        })
+  grid.print = function print({
+    padSize = 0,
+    minX = 0,
+    minY = 0,
+    maxX = sizeX,
+    maxY = sizeY,
+  } = {}) {
+    let str = '\n'
 
-        console.log(str)
-    }
+    _.range(minY, maxY).forEach(y => {
+      _.range(minX, maxX).forEach(x => {
+        str += _.pad(grid[x][y], padSize)
+      })
+      str += '\n'
+    })
 
-    return grid
+    console.log(str)
+  }
+
+  return grid
 }

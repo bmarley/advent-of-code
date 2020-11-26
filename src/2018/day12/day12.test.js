@@ -1,8 +1,8 @@
 import { solvePart1 } from './day12.js'
-import { trim } from 'src/utils.js'
+import { trim } from '../../utils.js'
 
 describe('2018 day 12', () => {
-    const example = trim(`
+  const example = trim(`
         initial state: #..#.#..##......###...###
 
         ...## => #
@@ -22,14 +22,14 @@ describe('2018 day 12', () => {
         ####. => #
     `)
 
-    // 0: ...#..#.#..##......###...###...........
-    // 1: ...#...#....#.....#..#..#..#...........
-    // 2: ...##..##...##....#..#..#..##..........
+  // 0: ...#..#.#..##......###...###...........
+  // 1: ...#...#....#.....#..#..#..#...........
+  // 2: ...##..##...##....#..#..#..##..........
 
-    describe('part 1', () => {
-        test('solves an example', () => {
-            const answer = solvePart1(example)
-            expect(answer).toEqual(325)
-        })
+  describe('part 1', () => {
+    test('solves an example', () => {
+      const answer = solvePart1(example)
+      expect(answer).toEqual(325)
     })
+  })
 })

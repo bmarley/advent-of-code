@@ -1,10 +1,10 @@
 import { solvePart1, solvePart2 } from './day02.js'
-import { trim } from 'src/utils.js'
+import { trim } from '../../utils.js'
 
 describe('2018 day 02', () => {
-    describe('part 1', () => {
-        test('solves an example', () => {
-            const example = trim(`
+  describe('part 1', () => {
+    test('solves an example', () => {
+      const example = trim(`
                 abcdef
                 bababc
                 abbcde
@@ -14,14 +14,14 @@ describe('2018 day 02', () => {
                 ababab
             `)
 
-            const answer = solvePart1(example)
-            expect(answer).toEqual(12)
-        })
+      const answer = solvePart1(example)
+      expect(answer).toEqual(12)
     })
+  })
 
-    describe('part 2', () => {
-        test('solves an example', () => {
-            const example = trim(`
+  describe('part 2', () => {
+    test('solves an example', () => {
+      const example = trim(`
                 abcde
                 fghij
                 klmno
@@ -31,8 +31,8 @@ describe('2018 day 02', () => {
                 wvxyz
             `)
 
-            const answer = solvePart2(example)
-            expect(answer).toEqual('fgij')
-        })
+      const answer = solvePart2(example)
+      expect(answer).toEqual('fgij')
     })
+  })
 })

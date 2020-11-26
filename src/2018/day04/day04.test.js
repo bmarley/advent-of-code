@@ -1,5 +1,5 @@
 import { solvePart1, solvePart2 } from './day04.js'
-import { trim } from 'src/utils.js'
+import { trim } from '../../utils.js'
 
 const example = trim(`
     [1518-11-01 00:00] Guard #10 begins shift
@@ -22,17 +22,17 @@ const example = trim(`
 `)
 
 describe('2018 day 04', () => {
-    describe('part 1', () => {
-        test('solves an example', () => {
-            const answer = solvePart1(example)
-            expect(answer).toEqual(240)
-        })
+  describe('part 1', () => {
+    test('solves an example', () => {
+      const answer = solvePart1(example)
+      expect(answer).toEqual(240)
     })
+  })
 
-    describe('part 2', () => {
-        test('solves an example', () => {
-            const answer = solvePart2(example)
-            expect(answer).toEqual(4455)
-        })
+  describe('part 2', () => {
+    test('solves an example', () => {
+      const answer = solvePart2(example)
+      expect(answer).toEqual(4455)
     })
+  })
 })

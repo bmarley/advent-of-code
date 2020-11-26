@@ -6,17 +6,17 @@ c dec -10 if a >= 1
 c inc -20 if c == 10`
 
 describe('day 8', () => {
-    describe('part 1', () => {
-        test('solves an example', () => {
-            const answer = solvePart1(example)
-            expect(answer).toEqual(1)
-        })
+  describe('part 1', () => {
+    test('solves an example', () => {
+      const answer = solvePart1(example)
+      expect(answer).toEqual(1)
     })
+  })
 
-    describe('part 2', () => {
-        test('solves an example', () => {
-            const answer = solvePart2(example)
-            expect(answer).toEqual(10)
-        })
+  describe('part 2', () => {
+    test('solves an example', () => {
+      const answer = solvePart2(example)
+      expect(answer).toEqual(10)
     })
+  })
 })
