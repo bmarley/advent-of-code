@@ -5,6 +5,12 @@ export function linesToNumbers(input) {
   return input.split('\n').map(Number)
 }
 
+// Returns Array<Number>
+export function linesToNumbersSorted(input) {
+  return input.split('\n').map(Number).sort((a,b) => a - b)
+}
+
+
 // Returns Array<Number> of every number found in the line
 export function extractNumbers(str) {
   return (str.match(/-?[0-9.,]+/g) || []).map(n => n.replace(/,/g, '')).map(Number)
