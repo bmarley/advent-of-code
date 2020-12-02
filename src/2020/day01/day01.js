@@ -52,7 +52,7 @@ export function solvePart2(input) {
         product: searchSpace[0] * searchSpace[1], 
         start: 2,
         newSearchSpaceFunc: (maxIndex) => {
-          let newSearchSpace = searchSpace.slice(2, maxIndex);
+          const newSearchSpace = searchSpace.slice(2, maxIndex);
           newSearchSpace.unshift(searchSpace[0])
           return newSearchSpace;
         }
