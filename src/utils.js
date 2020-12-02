@@ -29,6 +29,15 @@ export function manhattan(a, b) {
   return Math.abs(a.x - b.x) + Math.abs(a.y - b.y)
 }
 
+// Cycle array. Usage: for (const elem of cycle(arr)) {}
+export function* cycle(arr) {
+  let idx = 0
+  while (true) {
+    yield arr[idx]
+    idx = (idx + 1) % arr.length
+  }
+}
+
 export function Grid(sizeX, sizeY, fill) {
   const grid = Array(sizeX)
     .fill()
