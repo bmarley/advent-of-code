@@ -38,6 +38,10 @@ export function* cycle(arr) {
   }
 }
 
+export function xor(a, b) {
+  return a ? !b : !!b
+}
+
 export function Grid(sizeX, sizeY, fill) {
   const grid = Array(sizeX)
     .fill()

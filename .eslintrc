@@ -24,7 +24,7 @@
     "no-unused-vars": [2, { "args": "none" }],
     "no-use-before-define": "error",
     "no-prototype-builtins": "off",
-    "prefer-const": ["error", { "destructuring": "all", "ignoreReadBeforeAssign": false }],
+    "prefer-const": "off",
     "no-constant-condition": "off",
 
     "import/first": "error",
