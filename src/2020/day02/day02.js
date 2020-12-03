@@ -8,7 +8,7 @@ export function solvePart1(input) {
     let [policy, letter, password] = testpw.split(" ")
     letter = letter.replace(':', '')
     const [first, second] = policy.split('-');
-    const regex = new RegExp(`^(?:[^${letter}]*${letter}){${first},${second}}(?![^${letter}]*${letter})`, "g")
+    const regex = new RegExp(`^(?:[^${letter}]*${letter}){${first},${second}}z`, "g")
     count+=!!password.match(regex)
   })
   return count;
