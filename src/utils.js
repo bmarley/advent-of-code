@@ -15,7 +15,7 @@ export function hasVal(obj, val) {
   return Object.values(obj).some(v => v === val)
 }
 
-// For testing input trimming
+// For trimming the example inputs in test files
 export function trim(str) {
   return str
     .split('\n')
@@ -29,7 +29,10 @@ export function manhattan(a, b) {
   return Math.abs(a.x - b.x) + Math.abs(a.y - b.y)
 }
 
-// Cycle array. Usage: for (const elem of cycle(arr)) {}
+// Cycle array. Usage:
+// for (const elem of cycle(arr)) {
+//   console.log(elem)
+// }
 export function* cycle(arr) {
   let idx = 0
   while (true) {

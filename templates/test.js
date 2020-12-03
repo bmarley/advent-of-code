@@ -1,8 +1,9 @@
-import { solvePart1, solvePart2 } from './dayXXX.js' // eslint-disable-line
+import { solvePart1, solvePart2 } from './dayDD.js' // eslint-disable-line
 import * as U from '../../utils.js' // eslint-disable-line
 
-describe('YYY day XXX', () => {
-  const example = U.trim(``)
+describe('YYYY day DD', () => {
+  const example = U.trim(`
+  `)
 
   describe('part 1', () => {
     test('solves an example', () => {
