@@ -20,12 +20,12 @@ const PassValues = {
       let hgt;
 
       if ( data.includes('cm') ) {
-        hgt = Number(data.replace('cm', ''))
+        hgt = data.replace('cm', '')
         return hgt >= 150 && hgt <= 193
       } 
 
       if ( data.includes('in') ) {
-        hgt = Number(data.replace('in', ''))
+        hgt = data.replace('in', '')
         return hgt >= 59 && hgt <= 76
       }
 
