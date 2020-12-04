@@ -4,15 +4,15 @@ import * as U from '../../utils.js' // eslint-disable-line
 const PassValues = {
   BIRTH_YEAR: {
     id: 'byr',
-    validate: (data) =>  Number(data) >= 1920 && Number(data) <= 2002
+    validate: (data) =>  data >= 1920 && data <= 2002
   },
   ISSUE_YEAR: {
     id: 'iyr',
-    validate: (data) => Number(data) >= 2010 && Number(data) <= 2020
+    validate: (data) => data >= 2010 && data <= 2020
   },
   EXPR_YEAR: {
     id: 'eyr',
-    validate: (data) => Number(data) >= 2020 && Number(data) <= 2030
+    validate: (data) => data >= 2020 && data <= 2030
   },
   HEIGHT: {
     id: 'hgt',
@@ -34,7 +34,7 @@ const PassValues = {
   },
   HAIR_COLOR: {
     id: 'hcl',
-    validate: (data) => !!data.match('^#[0-9a-f]{6}$')
+    validate: (data) => /^#[0-9a-f]{6}$/.test(data)
   },
   EYE_COLOR: {
     id: 'ecl',
@@ -42,7 +42,7 @@ const PassValues = {
   },
   PASSPORT_ID: {
     id: 'pid',
-    validate: (data) => !!data.match('^[0-9]{9}$')
+    validate: (data) => /^[0-9]{9}$/.test(data)
   }
 }
 
@@ -58,10 +58,10 @@ const checkPassport = (passInfo, validate) => {
 
 export function solvePart1(input) {
   var passports = input.split('\n\n').map(l => l.replace(/\n/g, ' '))
-  return passports.map(p => checkPassport(p, false)).filter(p => p).length
+  return passports.filter(p => checkPassport(p, false)).length
 }
 
 export function solvePart2(input) {
   var passports = input.split('\n\n').map(l => l.replace(/\n/g, ' '))
-  return passports.map(p => checkPassport(p, true)).filter(p => p).length
+  return passports.filter(p => checkPassport(p, true)).length
 }
