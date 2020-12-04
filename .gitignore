@@ -1,6 +1,7 @@
 .env
 .tern-port
 .vimlocal
+.vscode
 
 node_modules/
 yarn-error.log

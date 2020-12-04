@@ -4,7 +4,7 @@ import * as U from '../../utils.js' // eslint-disable-line
 
 const getIndex = (slope, yCoord, line) => {
   const xCoord = (yCoord * slope)
-  const indexValue = slope > 1 ? line[xCoord % line.length] : yCoord % 1/slope === 0 ? line[xCoord % line.length] : 'x';
+  const indexValue = slope >= 1 ? line[xCoord % line.length] : yCoord % 1/slope === 0 ? line[xCoord % line.length] : 'x';
   return indexValue === "#" ? 1 : 0;
 };
 
