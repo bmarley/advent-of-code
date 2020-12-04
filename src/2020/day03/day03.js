@@ -20,15 +20,10 @@ export function solvePart1(input) {
 
 export function solvePart2(input) {
   var lines = input.split('\n')
-  const counts = lines.map(l => l.split('')).reduce(([c1, c2, c3, c4, c5], line, index) => {
-    return [
-      c1 += getIndex(1, index, line), 
-      c2 += getIndex(3, index, line),
-      c3 += getIndex(5, index, line),
-      c4 += getIndex(7, index, line),
-      c5 += getIndex(1/2, index, line)
-    ]
-  }, [0,0,0,0,0])
+  const counts = lines.map(l => l.split('')).reduce((acc, line, index) => {
+    const currIndexCounts = [getIndex(1, index, line), getIndex(3, index, line), getIndex(5, index, line), getIndex(7, index, line), getIndex(1/2, index, line)]
+    return _.zipWith(acc, currIndexCounts, (a, cI) => (a || 0) + cI)
+  }, [])
   
   return counts.reduce((acc, c) => acc * c)
 }
