@@ -53,7 +53,7 @@ const checkPassport = (passInfo, validate) => {
     return validated
   });
     
-  return _.every(extractedInformation, (value) => !!value)
+  return _.every(extractedInformation)
 }
 
 export function solvePart1(input) {
