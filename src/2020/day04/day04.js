@@ -48,11 +48,10 @@ const PassValues = {
 
 const checkPassport = (passInfo, validate) => {
   const extractedInformation = _.map(PassValues, (value) => {
-      const data = passInfo.match(`${value.id}:([^\\s]+)`)
-      const validated = !!data && (!validate || (validate && value.validate(data[1])))
-      return validated
-    })
-    console.log(extractedInformation)
+    const data = passInfo.match(`${value.id}:([^\\s]+)`)
+    const validated = !!data && (!validate || (validate && value.validate(data[1])))
+    return validated
+  });
     
   return _.every(extractedInformation, (value) => !!value)
 }
