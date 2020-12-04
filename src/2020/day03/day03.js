@@ -20,18 +20,15 @@ export function solvePart1(input) {
 
 export function solvePart2(input) {
   var lines = input.split('\n')
-  var count1 = 0;
-  var count2 = 0;
-  var count3 = 0;
-  var count4 = 0;
-  var count5 = 0;
-  lines.forEach((element, index) => {
-    var line = element.split('');
-    count1 += getIndex(1, index, line)
-    count2 += getIndex(3, index, line)
-    count3 += getIndex(5, index, line)
-    count4 += getIndex(7, index, line)
-    count5 += getIndex(1/2, index, line)
-  });
-  return count1 * count2 * count3 * count4 * count5;
+  const counts = lines.map(l => l.split('')).reduce(([c1, c2, c3, c4, c5], line, index) => {
+    return [
+      c1 += getIndex(1, index, line), 
+      c2 += getIndex(3, index, line),
+      c3 += getIndex(5, index, line),
+      c4 += getIndex(7, index, line),
+      c5 += getIndex(1/2, index, line)
+    ]
+  }, [0,0,0,0,0])
+  
+  return counts.reduce((acc, c) => acc * c)
 }
