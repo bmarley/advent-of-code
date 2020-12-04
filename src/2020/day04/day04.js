@@ -1,8 +1,6 @@
 import _ from 'lodash' // eslint-disable-line
 import * as U from '../../utils.js' // eslint-disable-line
 
-export const CLIPBOARD = () => false
-
 function isValid(p) {
   if (!p) return false
 
