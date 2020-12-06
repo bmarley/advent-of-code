@@ -2,6 +2,7 @@
 .tern-port
 .vimlocal
 .vscode
-
+.idea/*
+*.iml
 node_modules/
 yarn-error.log
