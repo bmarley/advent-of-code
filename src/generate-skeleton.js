@@ -10,8 +10,8 @@ const run = (year, day) => {
   const solution = fs.readFileSync(path.join(templatesBase, 'day.js'), 'utf-8')
   const test = fs
     .readFileSync(path.join(templatesBase, 'test.js'), 'utf-8')
-    .replace(/YYY/g, year)
-    .replace(/XXX/g, day)
+    .replace(/YYYY/g, year)
+    .replace(/DD/g, day)
 
   const destinationBase = path.join(__dirname, year, `day${day}`)
   const solutionPath = path.join(destinationBase, `day${day}.js`)

@@ -15,7 +15,7 @@ export function hasVal(obj, val) {
   return Object.values(obj).some(v => v === val)
 }
 
-// For testing input trimming
+// For trimming the example inputs in test files
 export function trim(str) {
   return str
     .split('\n')
@@ -27,6 +27,35 @@ export function trim(str) {
 // Manhattan distance between pairs of { x: Number, y: Number } objects
 export function manhattan(a, b) {
   return Math.abs(a.x - b.x) + Math.abs(a.y - b.y)
+}
+
+export function translate(str, from, to) {
+  const lookups = from.split('').reduce((acc, char, idx) => {
+    acc[char] = to[idx]
+    return acc
+  }, {})
+
+  let answer = []
+  for (let i = 0; i < str.length; i++) {
+    answer[i] = lookups[str[i]] || str[i]
+  }
+  return answer.join('')
+}
+
+// Cycle array. Usage:
+// for (const elem of cycle(arr)) {
+//   console.log(elem)
+// }
+export function* cycle(arr) {
+  let idx = 0
+  while (true) {
+    yield arr[idx]
+    idx = (idx + 1) % arr.length
+  }
+}
+
+export function xor(a, b) {
+  return a ? !b : !!b
 }
 
 export function Grid(sizeX, sizeY, fill) {

@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { linesToNumbers } from '../../utils.js'
+import { cycle, linesToNumbers } from '../../utils.js'
 
 const { sum } = _
 
@@ -12,14 +12,12 @@ export const solvePart1 = input => {
 export const solvePart2 = input => {
   const changes = linesToNumbers(input)
   const seen = new Set()
-  let idx = 0
   let freq = 0
 
-  while (true) {
-    freq += changes[idx]
+  for (const change of cycle(changes)) {
+    freq += change
     if (!addIfMissing(seen, freq)) {
       return freq
     }
-    idx = (idx + 1) % changes.length
   }
 }
