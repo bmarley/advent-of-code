@@ -41,12 +41,12 @@ const buildTree = (numbers) => {
   for(let n = 0; n < ordered.length; n++) {
 
     const currJoltage = ordered[n]
-    const additionalLeafNodes = currJoltage <= 3 ? [0] : []
+    const leafNodes = currJoltage <= 3 ? [0] : []
     const possibleChildren = _.filter(ordered.slice(n+1, n+4), (nextJoltage) => currJoltage - nextJoltage <= 3)
 
     nodeMap[currJoltage] = {
       value: currJoltage,
-      children: possibleChildren.concat(additionalLeafNodes)
+      children: possibleChildren.concat(leafNodes)
     }
   }
 
