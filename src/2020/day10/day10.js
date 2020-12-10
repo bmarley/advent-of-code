@@ -35,14 +35,13 @@ const buildTree = (numbers) => {
   const ordered = numbers.sort((a,b) => b-a)
 
   const nodeMap = {
-    '3e': { value: 3, children: [] },
-    '2e': { value: 2, children: [] }
+    0: { value: 0, children: [] },
   }
 
   for(let n = 0; n < ordered.length; n++) {
 
     const currJoltage = ordered[n]
-    const additionalLeafNodes = currJoltage <= 3 && currJoltage > 1 ? [`${currJoltage}e`] : []
+    const additionalLeafNodes = currJoltage <= 3 ? [0] : []
     const possibleChildren = _.filter(ordered.slice(n+1, n+4), (nextJoltage) => currJoltage - nextJoltage <= 3)
 
     nodeMap[currJoltage] = {
