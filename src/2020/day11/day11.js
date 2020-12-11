@@ -29,10 +29,10 @@ const getNextState = (state, maxOccupancy, immediate) => {
   return state.map((row, y) => {
     return row.map((seat, x) => {
 
+      if (seat === '.') return seat
+
       const adjacent = getAdjacentList({x, y}, state, immediate)
       const numOccupied = adjacent.filter(a => a === '#').length;
-
-      if (seat === '.') return seat
 
       return numOccupied >= maxOccupancy ? 'L' : numOccupied === 0 ? '#' : seat
 
